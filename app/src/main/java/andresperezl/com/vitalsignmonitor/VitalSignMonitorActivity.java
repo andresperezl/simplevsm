@@ -44,7 +44,8 @@ public class VitalSignMonitorActivity extends Activity implements SwipeRefreshLa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vital_sign_monitor);
-
+        
+        //Initialize the Hanlder and Listener
         vsHandler = new VitalSignsHandler(this);
         bhListener = new BioHarnessListener(vsHandler);
 
@@ -88,7 +89,7 @@ public class VitalSignMonitorActivity extends Activity implements SwipeRefreshLa
 
         return super.onOptionsItemSelected(item);
     }
-
+    // Refresh Bluetooth devices on swipe down on the list
     @Override
     public void onRefresh() {
         mDataset.clear();
@@ -101,7 +102,8 @@ public class VitalSignMonitorActivity extends Activity implements SwipeRefreshLa
             refreshDevices();
         }
     }
-
+    
+    //Only get the devices that start with "BH" (BioHarnesses)
     public void refreshDevices() {
         Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
         if (pairedDevices.size() > 0) {
