@@ -15,9 +15,11 @@ public class VitalSignsHandler extends Handler {
 
     public VitalSignsHandler(VitalSignMonitorActivity vsMonitor) {
         this.vsMonitor = vsMonitor;
+        //Use voley to make life easier
         requestQueue = Volley.newRequestQueue(vsMonitor);
     }
-
+    
+    //Get the data directly from the BioHarness tagged message and send directly to the server
     @Override
     public void handleMessage(Message msg) {
         Bundle data = msg.getData();
