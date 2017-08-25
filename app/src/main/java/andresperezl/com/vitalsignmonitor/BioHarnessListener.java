@@ -49,6 +49,7 @@ public class BioHarnessListener extends ConnectListenerImpl {
 
                 Message message = handler.obtainMessage();
                 Bundle data = message.getData();
+                //I'm only interested in the SUMMARY message, which is the one that contains the main vital signs values
                 if (id == SUMMARY_MSG_ID) {
                     data.putInt(HEART_RATE, sumPktInfo.GetHeartRate(dataArray));
                     data.putInt(HRV, sumPktInfo.GetHearRateVariability(dataArray));
